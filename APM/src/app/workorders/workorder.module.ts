@@ -8,16 +8,16 @@ import { SharedModule } from '../shared/shared.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { WorkorderData } from './data';
 
-import { ProductListComponent } from './List/product-list.component';
+import { ProductListComponent } from './example/product-list.component';
 import { WorkorderListComponent } from './List/workorder-list.component';
 
-import { ProductDetailComponent } from './Detail/product-detail.component';
+import { ProductDetailComponent } from './example/product-detail.component';
 import { WorkorderDetailComponent } from './Detail/workorder-detail.component';
 
-import { ProductEditComponent } from './Edit/product-edit.component';
+import { ProductEditComponent } from './example/product-edit.component';
 import { WorkorderEditComponent } from './Edit/workorder-edit.component';
 
-import { ProductEditGuard } from './Edit/product-edit.guard';
+import { ProductEditGuard } from './example/product-edit.guard';
 import { WorkorderEditGuard } from './Edit/workorder-edit.guard';
 
 

@@ -6,7 +6,7 @@ import { Observable, Subscription, fromEvent, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 import { Product } from '../Models/product';
-import { ProductService } from '../Services/product.service';
+import { ProductService } from './product.service';
 
 import { NumberValidators } from '../../shared/number.validator';
 import { GenericValidator } from '../../shared/generic-validator';

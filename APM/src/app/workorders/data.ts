@@ -11,7 +11,7 @@ export class WorkorderData implements InMemoryDbService {
       {
         id: 1,
         workorderName: 'I am a work order',
-        productCode: 'GDN-0011',
+        statusCode: 'INPRG',
         releaseDate: 'March 19, 2018',
         description: 'Leaf rake with 48-inch wooden handle',
         price: 19.95,
@@ -22,7 +22,7 @@ export class WorkorderData implements InMemoryDbService {
       {
         id: 2,
         workorderName: 'I am a work order 2 ',
-        productCode: 'GDN-0023',
+        statusCode: 'QREJECT',
         releaseDate: 'March 18, 2018',
         description: '15 gallon capacity rolling garden cart',
         price: 32.99,
@@ -32,7 +32,7 @@ export class WorkorderData implements InMemoryDbService {
       {
         id: 5,
         workorderName: 'I am a work order 3',
-        productCode: 'TBX-0048',
+        statusCode: 'PAC',
         releaseDate: 'May 21, 2018',
         description: 'Curved claw steel hammer',
         price: 8.9,
@@ -43,7 +43,7 @@ export class WorkorderData implements InMemoryDbService {
       {
         id: 8,
         workorderName: 'Saw',
-        productCode: 'TBX-0022',
+        statusCode: 'REC',
         releaseDate: 'May 15, 2018',
         description: '15-inch steel blade hand saw',
         price: 11.55,
@@ -53,7 +53,7 @@ export class WorkorderData implements InMemoryDbService {
       {
         id: 10,
         workorderName: 'Video Game Controller',
-        productCode: 'GMG-0042',
+        statusCode: 'PVINV',
         releaseDate: 'October 15, 2018',
         description: 'Standard two-button video game controller',
         price: 35.95,

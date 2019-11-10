@@ -87,7 +87,7 @@ export class WorkorderService {
     return {
       id: 0,
       workorderName: null,
-      productCode: null,
+      statusCode: null,
       tags: [''],
       releaseDate: null,
       price: null,

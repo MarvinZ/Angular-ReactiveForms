@@ -2,7 +2,7 @@
 export interface Workorder {
   id: number;
   workorderName: string;
-  productCode: string;
+  statusCode: string;
   tags?: string[];
   releaseDate: string;
   price: number;

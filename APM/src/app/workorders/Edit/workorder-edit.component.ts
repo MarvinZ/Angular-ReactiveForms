@@ -130,7 +130,7 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
     // Update the data on the form
     this.workorderForm.patchValue({
       workorderName: this.workorder.workorderName,
-      workorderCode: this.workorder.productCode,
+      workorderCode: this.workorder.statusCode,
       starRating: this.workorder.starRating,
       description: this.workorder.description
     });
