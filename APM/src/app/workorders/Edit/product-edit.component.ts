@@ -5,23 +5,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, fromEvent, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { Workorder } from './workorder';
-import { WorkorderService } from './workorder.service';
+import { Product } from '../Models/product';
+import { ProductService } from '../Services/product.service';
 
-import { NumberValidators } from '../shared/number.validator';
-import { GenericValidator } from '../shared/generic-validator';
+import { NumberValidators } from '../../shared/number.validator';
+import { GenericValidator } from '../../shared/generic-validator';
 
 @Component({
-  templateUrl: './workorder-edit.component.html'
+  templateUrl: './product-edit.component.html'
 })
-export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  pageTitle = 'Work order Edit';
+  pageTitle = 'Product Edit';
   errorMessage: string;
-  workorderForm: FormGroup;
+  productForm: FormGroup;
 
-  workorder: Workorder;
+  product: Product;
   private sub: Subscription;
 
   // Use with the generic validation message class
@@ -30,27 +30,27 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
   private genericValidator: GenericValidator;
 
   get tags(): FormArray {
-    return this.workorderForm.get('tags') as FormArray;
+    return this.productForm.get('tags') as FormArray;
   }
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private workorderService: WorkorderService) {
+              private productService: ProductService) {
 
     // Defines all of the validation messages for the form.
     // These could instead be retrieved from a file or database.
     this.validationMessages = {
-      WorkorderName: {
-        required: 'Workorder name is required.',
-        minlength: 'Workorder name must be at least three characters.',
-        maxlength: 'Workorder name cannot exceed 50 characters.'
+      productName: {
+        required: 'Product name is required.',
+        minlength: 'Product name must be at least three characters.',
+        maxlength: 'Product name cannot exceed 50 characters.'
       },
-      workorderCode: {
-        required: 'Workorder code is required.'
+      productCode: {
+        required: 'Product code is required.'
       },
       starRating: {
-        range: 'Rate the workorder between 1 (lowest) and 5 (highest).'
+        range: 'Rate the product between 1 (lowest) and 5 (highest).'
       }
     };
 
@@ -60,21 +60,21 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   ngOnInit(): void {
-    this.workorderForm = this.fb.group({
-      workorderName: ['', [Validators.required,
+    this.productForm = this.fb.group({
+      productName: ['', [Validators.required,
                          Validators.minLength(3),
                          Validators.maxLength(50)]],
-      workorderCode: ['', Validators.required],
+      productCode: ['', Validators.required],
       starRating: ['', NumberValidators.range(1, 5)],
       tags: this.fb.array([]),
       description: ''
     });
 
-    // Read the workorder Id from the route parameter
+    // Read the product Id from the route parameter
     this.sub = this.route.paramMap.subscribe(
       params => {
         const id = +params.get('id');
-        this.getWorkorder(id);
+        this.getProduct(id);
       }
     );
   }
@@ -91,10 +91,10 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
 
     // Merge the blur event observable with the valueChanges observable
     // so we only need to subscribe once.
-    merge(this.workorderForm.valueChanges, ...controlBlurs).pipe(
+    merge(this.productForm.valueChanges, ...controlBlurs).pipe(
       debounceTime(800)
     ).subscribe(value => {
-      this.displayMessage = this.genericValidator.processMessages(this.workorderForm);
+      this.displayMessage = this.genericValidator.processMessages(this.productForm);
     });
   }
 
@@ -107,43 +107,43 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
     this.tags.markAsDirty();
   }
 
-  getWorkorder(id: number): void {
-    this.workorderService.getWorkorder(id)
+  getProduct(id: number): void {
+    this.productService.getProduct(id)
       .subscribe({
-        next: (workorder: Workorder) => this.displayWorkorder(workorder),
+        next: (product: Product) => this.displayProduct(product),
         error: err => this.errorMessage = err
       });
   }
 
-  displayWorkorder(workorder: Workorder): void {
-    if (this.workorderForm) {
-      this.workorderForm.reset();
+  displayProduct(product: Product): void {
+    if (this.productForm) {
+      this.productForm.reset();
     }
-    this.workorder = workorder;
+    this.product = product;
 
-    if (this.workorder.id === 0) {
-      this.pageTitle = 'Add Workorder';
+    if (this.product.id === 0) {
+      this.pageTitle = 'Add Product';
     } else {
-      this.pageTitle = `Edit Workorder: ${this.workorder.workorderName}`;
+      this.pageTitle = `Edit Product: ${this.product.productName}`;
     }
 
     // Update the data on the form
-    this.workorderForm.patchValue({
-      workorderName: this.workorder.workorderName,
-      workorderCode: this.workorder.productCode,
-      starRating: this.workorder.starRating,
-      description: this.workorder.description
+    this.productForm.patchValue({
+      productName: this.product.productName,
+      productCode: this.product.productCode,
+      starRating: this.product.starRating,
+      description: this.product.description
     });
-    this.workorderForm.setControl('tags', this.fb.array(this.workorder.tags || []));
+    this.productForm.setControl('tags', this.fb.array(this.product.tags || []));
   }
 
-  deleteWorkorder(): void {
-    if (this.workorder.id === 0) {
+  deleteProduct(): void {
+    if (this.product.id === 0) {
       // Don't delete, it was never saved.
       this.onSaveComplete();
     } else {
-      if (confirm(`Really delete the workorder: ${this.workorder.workorderName}?`)) {
-        this.workorderService.deleteWorkorder(this.workorder.id)
+      if (confirm(`Really delete the product: ${this.product.productName}?`)) {
+        this.productService.deleteProduct(this.product.id)
           .subscribe({
             next: () => this.onSaveComplete(),
             error: err => this.errorMessage = err
@@ -152,19 +152,19 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
     }
   }
 
-  saveWorkorder(): void {
-    if (this.workorderForm.valid) {
-      if (this.workorderForm.dirty) {
-        const p = { ...this.workorder, ...this.workorderForm.value };
+  saveProduct(): void {
+    if (this.productForm.valid) {
+      if (this.productForm.dirty) {
+        const p = { ...this.product, ...this.productForm.value };
 
         if (p.id === 0) {
-          this.workorderService.createWorkorder(p)
+          this.productService.createProduct(p)
             .subscribe({
               next: () => this.onSaveComplete(),
               error: err => this.errorMessage = err
             });
         } else {
-          this.workorderService.updateWorkorder(p)
+          this.productService.updateProduct(p)
             .subscribe({
               next: () => this.onSaveComplete(),
               error: err => this.errorMessage = err
@@ -180,7 +180,7 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
 
   onSaveComplete(): void {
     // Reset the form to clear the flags
-    this.workorderForm.reset();
-    this.router.navigate(['/workorders']);
+    this.productForm.reset();
+    this.router.navigate(['/products']);
   }
 }

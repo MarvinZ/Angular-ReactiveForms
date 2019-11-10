@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Workorder } from './workorder';
-import { WorkorderService } from './workorder.service';
+import { Workorder } from '../Models/workorder';
+import { WorkorderService } from '../Services/workorder.service';
 
 @Component({
   templateUrl: './workorder-list.component.html',

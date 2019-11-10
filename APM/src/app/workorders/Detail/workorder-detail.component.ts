@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Workorder } from './workorder';
-import { WorkorderService } from './workorder.service';
+import { Workorder } from '../Models/workorder';
+import { WorkorderService } from '../Services/workorder.service';
 
 @Component({
   templateUrl: './workorder-detail.component.html',
@@ -22,11 +22,11 @@ export class WorkorderDetailComponent implements OnInit {
     const param = this.route.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
-      this.getProduct(id);
+      this.getWorkorder(id);
     }
   }
 
-  getProduct(id: number) {
+  getWorkorder(id: number) {
     this.workorderService.getWorkorder(id).subscribe({
       next: workorder => this.workorder = workorder,
       error: err => this.errorMessage = err

@@ -1,8 +1,8 @@
 
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { Workorder } from './workorder';
-import { Product } from './product';
+import { Workorder } from './Models/workorder';
+import { Product } from './Models/product';
 
 export class WorkorderData implements InMemoryDbService {
 

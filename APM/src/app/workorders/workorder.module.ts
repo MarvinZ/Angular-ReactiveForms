@@ -8,17 +8,17 @@ import { SharedModule } from '../shared/shared.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { WorkorderData } from './data';
 
-import { ProductListComponent } from './product-list.component';
-import { WorkorderListComponent } from './workorder-list.component';
+import { ProductListComponent } from './List/product-list.component';
+import { WorkorderListComponent } from './List/workorder-list.component';
 
-import { ProductDetailComponent } from './product-detail.component';
-import { WorkorderDetailComponent } from './workorder-detail.component';
+import { ProductDetailComponent } from './Detail/product-detail.component';
+import { WorkorderDetailComponent } from './Detail/workorder-detail.component';
 
-import { ProductEditComponent } from './product-edit.component';
-import { WorkorderEditComponent } from './workorder-edit.component';
+import { ProductEditComponent } from './Edit/product-edit.component';
+import { WorkorderEditComponent } from './Edit/workorder-edit.component';
 
-import { ProductEditGuard } from './product-edit.guard';
-import { WorkorderEditGuard } from './workorder-edit.guard';
+import { ProductEditGuard } from './Edit/product-edit.guard';
+import { WorkorderEditGuard } from './Edit/workorder-edit.guard';
 
 
 @NgModule({
@@ -52,4 +52,4 @@ import { WorkorderEditGuard } from './workorder-edit.guard';
     WorkorderEditComponent
   ]
 })
-export class ProductModule { }
+export class WorkorderModule { }

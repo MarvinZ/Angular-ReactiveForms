@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductModule } from './products/product.module';
+import { WorkorderModule } from './workorders/workorder.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { ProductModule } from './products/product.module';
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]),
-    ProductModule
+    WorkorderModule
   ],
   bootstrap: [AppComponent]
 })
