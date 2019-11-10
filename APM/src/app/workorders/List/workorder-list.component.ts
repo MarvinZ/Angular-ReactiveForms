@@ -31,7 +31,7 @@ export class WorkorderListComponent implements OnInit {
   performFilter(filterBy: string): Workorder[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.workorders.filter((workorder: Workorder) =>
-      workorder.workorderName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      workorder.workorderNumber.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   toggleImage(): void {

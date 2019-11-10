@@ -41,7 +41,7 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
     // Defines all of the validation messages for the form.
     // These could instead be retrieved from a file or database.
     this.validationMessages = {
-      WorkorderName: {
+      workorderNumber: {
         required: 'Workorder name is required.',
         minlength: 'Workorder name must be at least three characters.',
         maxlength: 'Workorder name cannot exceed 50 characters.'
@@ -61,7 +61,7 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngOnInit(): void {
     this.workorderForm = this.fb.group({
-      workorderName: ['', [Validators.required,
+      workorderNumber: ['', [Validators.required,
                          Validators.minLength(3),
                          Validators.maxLength(50)]],
       workorderCode: ['', Validators.required],
@@ -124,12 +124,12 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
     if (this.workorder.id === 0) {
       this.pageTitle = 'Add Workorder';
     } else {
-      this.pageTitle = `Edit Workorder: ${this.workorder.workorderName}`;
+      this.pageTitle = `Edit Workorder: ${this.workorder.workorderNumber}`;
     }
 
     // Update the data on the form
     this.workorderForm.patchValue({
-      workorderName: this.workorder.workorderName,
+      workorderNumber: this.workorder.workorderNumber,
       workorderCode: this.workorder.statusCode,
       starRating: this.workorder.starRating,
       description: this.workorder.description
@@ -142,7 +142,7 @@ export class WorkorderEditComponent implements OnInit, AfterViewInit, OnDestroy 
       // Don't delete, it was never saved.
       this.onSaveComplete();
     } else {
-      if (confirm(`Really delete the workorder: ${this.workorder.workorderName}?`)) {
+      if (confirm(`Really delete the workorder: ${this.workorder.workorderNumber}?`)) {
         this.workorderService.deleteWorkorder(this.workorder.id)
           .subscribe({
             next: () => this.onSaveComplete(),

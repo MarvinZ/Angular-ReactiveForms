@@ -42,13 +42,13 @@
             <td>
               <img *ngIf="showImage && workorder.imageUrl"
                    [src]="workorder.imageUrl"
-                   [title]="workorder.workorderName"
+                   [title]="workorder.workorderNumber"
                    [style.width.px]="imageWidth"
                    [style.margin.px]="imageMargin">
             </td>
             <td>
               <a [routerLink]="['/workorders', workorder.id]">
-                {{ workorder.workorderName }}
+                {{ workorder.workorderNumber }}
               </a>
             </td>
             <td>{{ workorder.statusCode }}</td>

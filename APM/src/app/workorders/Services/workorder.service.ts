@@ -86,7 +86,7 @@ export class WorkorderService {
     // Return an initialized object
     return {
       id: 0,
-      workorderName: null,
+      workorderNumber: null,
       statusCode: null,
       tags: [''],
       releaseDate: null,

@@ -10,7 +10,7 @@ export class WorkorderData implements InMemoryDbService {
     const workorders: Workorder[] = [
       {
         id: 1,
-        workorderName: 'I am a work order',
+        workorderNumber: 'WEB-12345',
         statusCode: 'INPRG',
         releaseDate: 'March 19, 2018',
         description: 'Leaf rake with 48-inch wooden handle',
@@ -21,7 +21,7 @@ export class WorkorderData implements InMemoryDbService {
       },
       {
         id: 2,
-        workorderName: 'I am a work order 2 ',
+        workorderNumber: 'WEB-123467',
         statusCode: 'QREJECT',
         releaseDate: 'March 18, 2018',
         description: '15 gallon capacity rolling garden cart',
@@ -31,7 +31,7 @@ export class WorkorderData implements InMemoryDbService {
       },
       {
         id: 5,
-        workorderName: 'I am a work order 3',
+        workorderNumber: 'PM-12345',
         statusCode: 'PAC',
         releaseDate: 'May 21, 2018',
         description: 'Curved claw steel hammer',
@@ -42,7 +42,7 @@ export class WorkorderData implements InMemoryDbService {
       },
       {
         id: 8,
-        workorderName: 'Saw',
+        workorderNumber: 'WEB-56567',
         statusCode: 'REC',
         releaseDate: 'May 15, 2018',
         description: '15-inch steel blade hand saw',
@@ -52,7 +52,7 @@ export class WorkorderData implements InMemoryDbService {
       },
       {
         id: 10,
-        workorderName: 'Video Game Controller',
+        workorderNumber: 'PM-345654',
         statusCode: 'PVINV',
         releaseDate: 'October 15, 2018',
         description: 'Standard two-button video game controller',

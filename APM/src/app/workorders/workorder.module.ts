@@ -25,7 +25,7 @@ import { WorkorderEditGuard } from './Edit/workorder-edit.guard';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    InMemoryWebApiModule.forRoot(WorkorderData),
+    InMemoryWebApiModule.forRoot(WorkorderData, {delay: 1500}),
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
       { path: 'workorders', component: WorkorderListComponent },

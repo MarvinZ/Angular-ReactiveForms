@@ -10,8 +10,8 @@ import { WorkorderEditComponent } from './workorder-edit.component';
 export class WorkorderEditGuard implements CanDeactivate<WorkorderEditComponent> {
   canDeactivate(component: WorkorderEditComponent): Observable<boolean> | Promise<boolean> | boolean {
     if (component.workorderForm.dirty) {
-      const workorderName = component.workorderForm.get('workorderName').value || 'New Workorder';
-      return confirm(`Navigate away and lose all changes to ${workorderName}?`);
+      const workorderNumber = component.workorderForm.get('workorderNumber').value || 'New Workorder';
+      return confirm(`Navigate away and lose all changes to ${workorderNumber}?`);
     }
     return true;
   }

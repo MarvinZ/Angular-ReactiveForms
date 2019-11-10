@@ -1,7 +1,7 @@
 /* Defines the Workorder entity */
 export interface Workorder {
   id: number;
-  workorderName: string;
+  workorderNumber: string;
   statusCode: string;
   tags?: string[];
   releaseDate: string;
