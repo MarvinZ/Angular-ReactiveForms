@@ -20,7 +20,7 @@
 
     <div class="table-responsive">
       <table class="table mb-0"
-             *ngIf="products && products.length">
+             *ngIf="workorders && workorders.length">
         <thead>
           <tr>
             <th>
@@ -29,7 +29,7 @@
                 {{showImage ? "Hide" : "Show"}} Image
               </button>
             </th>
-            <th>Product</th>
+            <th>Work Order</th>
             <th>Code</th>
             <th>Available</th>
             <th>Price</th>
@@ -38,29 +38,29 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of filteredProducts">
+          <tr *ngFor="let workorder of filteredWorkorders">
             <td>
-              <img *ngIf="showImage && product.imageUrl"
-                   [src]="product.imageUrl"
-                   [title]="product.productName"
+              <img *ngIf="showImage && workorder.imageUrl"
+                   [src]="workorder.imageUrl"
+                   [title]="workorder.workorderName"
                    [style.width.px]="imageWidth"
                    [style.margin.px]="imageMargin">
             </td>
             <td>
-              <a [routerLink]="['/workorders', product.id]">
-                {{ product.productName }}
+              <a [routerLink]="['/workorders', workorder.id]">
+                {{ workorder.workorderName }}
               </a>
             </td>
-            <td>{{ product.productCode }}</td>
-            <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price | currency:"USD":"symbol":"1.2-2" }}</td>
+            <td>{{ workorder.productCode }}</td>
+            <td>{{ workorder.releaseDate }}</td>
+            <td>{{ workorder.price | currency:"USD":"symbol":"1.2-2" }}</td>
             <td>
-              <pm-star [rating]="product.starRating">
+              <pm-star [rating]="workorder.starRating">
               </pm-star>
             </td>
             <td>
               <button class="btn btn-outline-primary btn-sm"
-                      [routerLink]="['/workorders', product.id, 'edit']">
+                      [routerLink]="['/workorders', workorder.id, 'edit']">
                 Edit
               </button>
             </td>

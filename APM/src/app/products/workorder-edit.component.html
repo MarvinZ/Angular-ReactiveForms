@@ -1,42 +1,41 @@
 <div class="card">
   <div class="card-header">
-    {{pageTitle}} - Work Or
-    der
+    {{pageTitle}} - Work Order
   </div>
 
   <div class="card-body">
     <form novalidate
-          (ngSubmit)="saveProduct()"
-          [formGroup]="productForm">
+          (ngSubmit)="saveWorkorder()"
+          [formGroup]="workorderForm">
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
-               for="productNameId">Product Name</label>
+               for="workorderNameId">Workorder Name</label>
         <div class="col-md-8">
           <input class="form-control"
-                 id="productNameId"
+                 id="workorderNameId"
                  type="text"
                  placeholder="Name (required)"
-                 formControlName="productName"
-                 [ngClass]="{'is-invalid': displayMessage.productName }" />
+                 formControlName="workorderName"
+                 [ngClass]="{'is-invalid': displayMessage.workorderName }" />
           <span class="invalid-feedback">
-            {{displayMessage.productName}}
+            {{displayMessage.workorderName}}
           </span>
         </div>
       </div>
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
-               for="productCodeId">Product Code</label>
+               for="workorderCodeId">Workorder Code</label>
         <div class="col-md-8">
           <input class="form-control"
-                 id="productCodeId"
+                 id="workorderCodeId"
                  type="text"
                  placeholder="Code (required)"
-                 formControlName="productCode"
-                 [ngClass]="{'is-invalid': displayMessage.productCode}" />
+                 formControlName="workorderCode"
+                 [ngClass]="{'is-invalid': displayMessage.workorderCode}" />
           <span class="invalid-feedback">
-            {{displayMessage.productCode}}
+            {{displayMessage.workorderCode}}
           </span>
         </div>
       </div>
@@ -111,8 +110,8 @@
           <button class="btn btn-primary mr-3"
                   style="width:80px;"
                   type="submit"
-                  [title]="productForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!productForm.valid">
+                  [title]="workorderForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!workorderForm.valid">
             Save
           </button>
           <button class="btn btn-outline-secondary mr-3"
@@ -125,8 +124,8 @@
           <button class="btn btn-outline-warning"
                   style="width:80px"
                   type="button"
-                  title="Delete this product"
-                  (click)="deleteProduct()">
+                  title="Delete this workorder"
+                  (click)="deleteWorkorder()">
             Delete
           </button>
         </div>

@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Product } from './product';
-import { ProductService } from './product.service';
+import { Workorder } from './workorder';
+import { WorkorderService } from './workorder.service';
 
 @Component({
   templateUrl: './workorder-detail.component.html',
   styleUrls: ['./workorder-detail.component.css']
 })
 export class WorkorderDetailComponent implements OnInit {
-  pageTitle = 'Product Detail';
+  pageTitle = 'Workorder Detail';
   errorMessage = '';
-  product: Product | undefined;
+  workorder: Workorder | undefined;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private productService: ProductService) {
+              private workorderService: WorkorderService) {
   }
 
   ngOnInit() {
@@ -27,14 +27,14 @@ export class WorkorderDetailComponent implements OnInit {
   }
 
   getProduct(id: number) {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.product = product,
+    this.workorderService.getWorkorder(id).subscribe({
+      next: workorder => this.workorder = workorder,
       error: err => this.errorMessage = err
     });
   }
 
   onBack(): void {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/workorders']);
   }
 
 }

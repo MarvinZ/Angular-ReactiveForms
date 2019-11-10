@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from './product';
-import { ProductService } from './product.service';
+import { Workorder } from './workorder';
+import { WorkorderService } from './workorder.service';
 
 @Component({
   templateUrl: './workorder-list.component.html',
@@ -20,18 +20,18 @@ export class WorkorderListComponent implements OnInit {
   }
   set listFilter(value: string) {
     this._listFilter = value;
-    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+    this.filteredWorkorders = this.listFilter ? this.performFilter(this.listFilter) : this.workorders;
   }
 
-  filteredProducts: Product[] = [];
-  products: Product[] = [];
+  filteredWorkorders: Workorder[] = [];
+  workorders: Workorder[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private workorderService: WorkorderService) { }
 
-  performFilter(filterBy: string): Product[] {
+  performFilter(filterBy: string): Workorder[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.products.filter((product: Product) =>
-      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    return this.workorders.filter((workorder: Workorder) =>
+      workorder.workorderName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   toggleImage(): void {
@@ -39,10 +39,10 @@ export class WorkorderListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: products => {
-        this.products = products;
-        this.filteredProducts = this.products;
+    this.workorderService.getWorkorders().subscribe({
+      next: workorders => {
+        this.workorders = workorders;
+        this.filteredWorkorders = this.workorders;
       },
       error: err => this.errorMessage = err
     });

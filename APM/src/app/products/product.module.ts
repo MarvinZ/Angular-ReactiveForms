@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ProductData } from './product-data';
+import { WorkorderData } from './data';
 
 import { ProductListComponent } from './product-list.component';
 import { WorkorderListComponent } from './workorder-list.component';
@@ -25,7 +25,7 @@ import { WorkorderEditGuard } from './workorder-edit.guard';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    InMemoryWebApiModule.forRoot(ProductData),
+    InMemoryWebApiModule.forRoot(WorkorderData),
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
       { path: 'workorders', component: WorkorderListComponent },

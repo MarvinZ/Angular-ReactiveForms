@@ -1,55 +1,55 @@
 <div class="card">
   <div class="card-header"
-       *ngIf="product">
-    {{pageTitle + ": " + product.productName}} - Wrok Order
+       *ngIf="workorder">
+    {{pageTitle + ": " + workorder.workorderName}} - Wrok Order
   </div>
 
   <div class="card-body"
-       *ngIf="product">
+       *ngIf="workorder">
 
     <div class="row">
 
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-3">Name:</div>
-          <div class="col-md-6">{{product.productName}}</div>
+          <div class="col-md-6">{{workorder.workorderName}}</div>
         </div>
         <div class="row">
           <div class="col-md-3">Code:</div>
-          <div class="col-md-6">{{product.productCode}}</div>
+          <div class="col-md-6">{{workorder.workorderCode}}</div>
         </div>
         <div class="row">
           <div class="col-md-3">Description:</div>
-          <div class="col-md-6">{{product.description}}</div>
+          <div class="col-md-6">{{workorder.description}}</div>
         </div>
         <div class="row">
           <div class="col-md-3">Availability:</div>
-          <div class="col-md-6">{{product.releaseDate}}</div>
+          <div class="col-md-6">{{workorder.releaseDate}}</div>
         </div>
         <div class="row">
           <div class="col-md-3">Price:</div>
-          <div class="col-md-6">{{product.price|currency:"USD":"symbol"}}</div>
+          <div class="col-md-6">{{workorder.price|currency:"USD":"symbol"}}</div>
         </div>
         <div class="row">
           <div class="col-md-3">5 Star Rating:</div>
           <div class="col-md-6">
-            <pm-star [rating]="product.starRating">
+            <pm-star [rating]="workorder.starRating">
             </pm-star>
           </div>
         </div>
         <div class="row">
           <div class="col-md-3">Tags:</div>
-          <div class="col-md-6">{{product.tags}}</div>
+          <div class="col-md-6">{{workorder.tags}}</div>
         </div>
       </div>
 
       <div class="col-md-4"
-           *ngIf="product.imageUrl">
+           *ngIf="workorder.imageUrl">
         <img class="center-block img-responsive"
              [style.height.px]="150"
              [style.margin.px]="2"
-             [src]="product.imageUrl"
-             [title]="product.productName">
+             [src]="workorder.imageUrl"
+             [title]="workorder.workorderName">
       </div>
     </div>
 
@@ -62,7 +62,7 @@
         </button>
         <button class="btn btn-outline-primary"
                 style="width:80px"
-                [routerLink]="['/workorders', product.id, 'edit']">
+                [routerLink]="['/workorders', workorder.id, 'edit']">
           Edit
         </button>
       </div>
